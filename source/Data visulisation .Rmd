@@ -1,0 +1,34 @@
+---
+title: "Data Visualization"
+author: "Martin"
+date: "2/24/2022"
+output: html_document
+---
+
+### Introduction
+
+The variable that I chose to analyze is Jail. The components under the Jail variables are composed by jail admissions, jail population, pretrial population, jurisdiction identifier, private jail jurisdiction flag, and multi-jurisdiction jail flag. After watching the Netflix documentary "13TH | FULL FEATURE", I reveal that there was reason in american history that causes the increase in jail population. Hence, I will focus on analyzing jail population. Total jail population is defined as the average daily number through December 31 of a given year. Jail population estimates are dis-aggregated by race and gender as well as by jurisdiction.
+
+```{r echo=FALSE}
+file <- "https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv"
+county_level <- read.csv(file, header=TRUE)
+View(county_level)
+
+jail_population <- county_level %>%
+  filter(year == max(year, na.rm = TRUE)) %>%
+  pull(total_pop)
+
+barplot(jail_population, main="Jail population", xlab="Population in 2018 in different county",  
+        ylab="Total population",
+        border="blue", density=c(10,20,30,40,50))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

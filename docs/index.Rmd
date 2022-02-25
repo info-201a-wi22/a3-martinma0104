@@ -1,1 +1,40 @@
+---
+title: "Data Visualization"
+author: "Martin"
+date: "2/24/2022"
+output: html_document
+---
+# Data Visualization (incarceration)
 
+### Introduction 
+The variable that I chose to analyze is Jail. The components under the Jail variables are composed by jail admissions, jail population, pretrial population, jurisdiction identifier, private jail jurisdiction flag, and multi-jurisdiction jail flag. After watching the Netflix documentary "13TH | FULL FEATURE", I reveal that there was reason in american history that causes the increase in jail population. Hence, I will focus on analyzing jail population. Total jail population is defined as the average daily number through December 31 of a given year. Jail population estimates are dis-aggregated by race and gender as well as by jurisdiction.
+
+```{r}
+source("~/Desktop/Info/a3-martinma0104/source/analysis.R")
+
+Stat_with_most_population <- county_level %>%
+  filter(total_pop == max(total_pop, na.rm=TRUE)) %>%
+  pull(state)
+
+Stat_with_least_population <- county_level %>%
+  filter(total_pop == min(total_pop, na.rm=TRUE)) %>%
+  pull(state)
+```
+
+By evaluating the data sets I found out that the state with the highest jail population is CA and AK is the state with the least jail population. 
+
+```{r}
+Year_with_most_population <- county_level %>%
+  filter(total_pop == max(total_pop, na.rm=TRUE)) %>%
+  pull(year)
+
+Year_with_least_population <- county_level %>%
+  filter(total_pop == min(total_pop, na.rm=TRUE)) %>%
+  pull(year)
+```
+
+The year with the most jail population is 2016. There were many years with the least population, which are 1970, 1971, 1972. 
+
+The graph shows the Jail population in 2018. Each bar represents a county. The y axis is the number of people in jail. We can see that there are huge differences of jail population in each county.
+
+### Trends over time charts
