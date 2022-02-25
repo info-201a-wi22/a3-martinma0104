@@ -38,3 +38,8 @@ The year with the most jail population is 2016. There were many years with the l
 The graph shows the Jail population in 2018. Each bar represents a county. The y axis is the number of people in jail. We can see that there are huge differences of jail population in each county.
 
 ### Trends over time charts
+
+```{r}
+source("~/Desktop/Info/a3-martinma0104/source/1analysis.R")
+```
+The Charts 

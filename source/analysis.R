@@ -31,3 +31,4 @@ Year_with_most_population <- county_level %>%
 Year_with_least_population <- county_level %>%
   filter(total_pop == min(total_pop, na.rm=TRUE)) %>%
   pull(year)
+
