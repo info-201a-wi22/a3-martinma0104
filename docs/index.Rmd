@@ -38,8 +38,60 @@ The year with the most jail population is 2016. There were many years with the l
 The graph shows the Jail population in 2018. Each bar represents a county. The y axis is the number of people in jail. We can see that there are huge differences of jail population in each county.
 
 ### Trends over time charts
+The Charts shows the trend of jail population in three counties from 2008 to 2018. The y-axis is total jail population and the x-axis is time. The line graph can clearly shows the trend, which is an increasing trend. LA has the most jail population within the three counties. San Francisco has the least jail population within the three counties. 
 
 ```{r}
 source("~/Desktop/Info/a3-martinma0104/source/1analysis.R")
 ```
-The Charts 
+
+
+### Comparison 
+
+```{r echo=FALSE}
+library(readxl)
+library(ggplot2) 
+library(plotly)
+library(hrbrthemes)
+Info_data1 <- read_excel("~/Desktop/Info_data1.xlsx")
+Info_data1$Date <- as.Date(Info_data1$Date)
+
+Info_data1 %>% 
+  ggplot( aes(x=Date, y=male_pop_15to64)) +
+  geom_line(color="#69b3a2") +
+  ylim(0,20000) +
+  theme_ipsum()
+```
+```{r echo=FALSE}
+Info2 <- read_excel("~/Desktop/Info2.xlsx")
+Info2$Date <- as.Date(Info2$Date)
+
+Info2 %>% 
+  ggplot( aes(x=Date, y=female_pop_15to64)) +
+  geom_line(color="#69b3a2") +
+  ylim(0,20000) +
+  theme_ipsum()
+```
+
+
+The female jail population and male population are having the same trend, which is increasing from 1970 to 2018. The population of female is bit higher than the male population. 
+
+### Mapping
+
+```{r echo=FALSE}
+library(maps)
+library(tmap) 
+library(leaflet) 
+library(ggplot2) 
+library(dplyr)
+library(tidyverse)
+library(ggmap)
+
+map <- get_stamenmap(
+  bbox = c(left = -133.77, bottom = 8.32, right = -51.33, top = 62.02),
+  maptype = "toner",
+  zoom = 4
+)
+
+ggmap(map)
+```
+
